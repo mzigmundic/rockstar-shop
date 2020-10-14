@@ -1,3 +1,7 @@
+body {
+    background-color: #dfdfdf;
+}
+
 main {
     min-height: 80vh;
 }
