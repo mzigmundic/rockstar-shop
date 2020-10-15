@@ -8,7 +8,7 @@ const products = [
         category: "Music",
         price: 399.99,
         countInStock: 10,
-        rating: 4.2,
+        rating: 3.8,
         numReviews: 5,
     },
     {
@@ -20,7 +20,7 @@ const products = [
         category: "Music",
         price: 599.99,
         countInStock: 7,
-        rating: 4.8,
+        rating: 4.4,
         numReviews: 8,
     },
     {
@@ -56,7 +56,7 @@ const products = [
         category: "Music",
         price: 1299.99,
         countInStock: 7,
-        rating: 4.6,
+        rating: 4.2,
         numReviews: 10,
     },
     {
@@ -68,7 +68,7 @@ const products = [
         category: "Music",
         price: 89.99,
         countInStock: 0,
-        rating: 4.2,
+        rating: 3.2,
         numReviews: 12,
     },
     {
@@ -80,7 +80,7 @@ const products = [
         category: "Music",
         price: 899.99,
         countInStock: 0,
-        rating: 4.2,
+        rating: 4.0,
         numReviews: 12,
     },
 ];
