@@ -1,6 +1,5 @@
 const products = [
     {
-        _id: "1",
         name: "Eastwood Acoustic Guitar",
         image: "/imgs/eastwoodacousticguitar.png",
         description: "Acoustic guitar very cool and awesome",
@@ -12,7 +11,6 @@ const products = [
         numReviews: 5,
     },
     {
-        _id: "2",
         name: "Fender Guitar Amplifier",
         image: "/imgs/fenderguitaramp.png",
         description: "Amplifier for electric guitar very cool and awesome",
@@ -24,7 +22,6 @@ const products = [
         numReviews: 8,
     },
     {
-        _id: "3",
         name: "Ibanez Electric Bas Guitar",
         image: "/imgs/ibanezbasguitar.png",
         description: "Bas guitar very cool and awesome",
@@ -36,7 +33,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: "4",
         name: "Ibanez Electric Guitar",
         image: "/imgs/ibanezelectricguitar.png",
         description: "Electric guitar very cool and awesome",
@@ -48,7 +44,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: "5",
         name: "Roland Mixing Console",
         image: "/imgs/rolandmixingconsole.png",
         description: "Mixing console very cool and awesome",
@@ -60,7 +55,6 @@ const products = [
         numReviews: 10,
     },
     {
-        _id: "6",
         name: "Line 6 Delay Modeler",
         image: "/imgs/line6delaymodeler.png",
         description: "Delay Modeler very cool and awesome",
@@ -72,7 +66,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: "7",
         name: "Hohner Accordion",
         image: "/imgs/hohneraccordion.png",
         description: "Accordion very cool and awesome",
