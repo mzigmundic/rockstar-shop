@@ -11,7 +11,7 @@ import {
     Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 const CartPage = ({ match, location, history }) => {
     const productId = match.params.id;
@@ -26,7 +26,9 @@ const CartPage = ({ match, location, history }) => {
         }
     }, [dispatch, productId, qty]);
 
-    const removeFromCartHandler = (id) => {};
+    const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id));
+    };
 
     const checkoutHandler = () => {
         history.push("/login?redirect=shipping");
@@ -131,7 +133,9 @@ const CartPage = ({ match, location, history }) => {
                                 className="btn-block"
                                 disabled={cartItems.length === 0}
                                 onClick={checkoutHandler}
-                            ></Button>
+                            >
+                                Checkout
+                            </Button>
                         </ListGroup.Item>
                     </ListGroup>
                 </Card>
