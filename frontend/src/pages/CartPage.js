@@ -56,7 +56,7 @@ const CartPage = ({ match, location, history }) => {
                                         />
                                     </Col>
                                     <Col md={3}>
-                                        <Link to={`product/${item.product}`}>
+                                        <Link to={`/product/${item.product}`}>
                                             {item.name}
                                         </Link>
                                     </Col>

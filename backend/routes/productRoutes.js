@@ -6,7 +6,7 @@ const router = express.Router();
 
 // @desc    Fetch All Products
 // @route   GET /api/products
-// @desc    Public
+// @access    Public
 router.get(
     "/",
     asyncHandler(async (req, res) => {
@@ -18,7 +18,7 @@ router.get(
 
 // @desc    Fetch Single Product
 // @route   GET /api/products/:id
-// @desc    Public
+// @access    Public
 router.get(
     "/:id",
     asyncHandler(async (req, res) => {
