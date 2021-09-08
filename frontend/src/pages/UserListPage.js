@@ -73,7 +73,7 @@ const UserListPage = ({ history }) => {
                                     )}
                                 </td>
                                 <td>
-                                    <Link to={`/user/${user._id}/edit`}>
+                                    <Link to={`/admin/user/${user._id}/edit`}>
                                         <Button
                                             variant="secondary"
                                             className="btn-sm"
