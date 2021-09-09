@@ -4,13 +4,26 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listProducts, deleteProduct } from "../actions/productActions";
+import {
+    listProducts,
+    createProduct,
+    deleteProduct,
+} from "../actions/productActions";
+import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 
 const ProductListPage = ({ history, match }) => {
     const dispatch = useDispatch();
 
     const productList = useSelector((state) => state.productList);
     const { loading, error, products } = productList;
+
+    const productCreate = useSelector((state) => state.productCreate);
+    const {
+        loading: loadingCreate,
+        error: errorCreate,
+        success: successCreate,
+        product: createdProduct,
+    } = productCreate;
 
     const productDelete = useSelector((state) => state.productDelete);
     const {
@@ -23,12 +36,23 @@ const ProductListPage = ({ history, match }) => {
     const { userInfo } = userLogin;
 
     useEffect(() => {
-        if (userInfo && userInfo.isAdmin) {
-            dispatch(listProducts());
-        } else {
+        dispatch({ type: PRODUCT_CREATE_RESET });
+        if (!userInfo.isAdmin) {
             history.push("/login");
         }
-    }, [dispatch, history, userInfo, successDelete]);
+        if (successCreate) {
+            history.push(`/admin/product/${createdProduct._id}/edit`);
+        } else {
+            dispatch(listProducts());
+        }
+    }, [
+        dispatch,
+        history,
+        userInfo,
+        successDelete,
+        successCreate,
+        createdProduct,
+    ]);
 
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure?")) {
@@ -37,7 +61,7 @@ const ProductListPage = ({ history, match }) => {
     };
 
     const createProductHandler = () => {
-        console.log("Create product");
+        dispatch(createProduct());
     };
     return (
         <Fragment>
@@ -51,6 +75,8 @@ const ProductListPage = ({ history, match }) => {
                     </Button>
                 </Col>
             </Row>
+            {loadingCreate && <Loader />}
+            {errorCreate && <Message variant="danger">{errorCreate}</Message>}
             {loadingDelete && <Loader />}
             {errorDelete && <Message variant="danger">{errorDelete}</Message>}
             {loading ? (
