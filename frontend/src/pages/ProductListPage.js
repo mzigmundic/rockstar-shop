@@ -105,7 +105,7 @@ const ProductListPage = ({ history, match }) => {
                                 <td>{product.brand}</td>
                                 <td>
                                     <Link
-                                        to={`/admin/user/${product._id}/edit`}
+                                        to={`/admin/product/${product._id}/edit`}
                                     >
                                         <Button
                                             variant="secondary"
