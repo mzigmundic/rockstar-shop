@@ -13,6 +13,7 @@ import ShippingPage from "./pages/ShippingPage";
 import PaymentPage from "./pages/PaymentPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import OrderPage from "./pages/OrderPage";
+import OrderListPage from "./pages/OrderListPage";
 import UserListPage from "./pages/UserListPage";
 import UserEditPage from "./pages/UserEditPage";
 import ProductListPage from "./pages/ProductListPage";
@@ -39,6 +40,7 @@ function App() {
                         path="/admin/product-list"
                         component={ProductListPage}
                     />
+                    <Route path="/admin/order-list" component={OrderListPage} />
                     <Route
                         path="/admin/product/:id/edit"
                         component={ProductEditPage}
