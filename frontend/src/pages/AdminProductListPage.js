@@ -12,7 +12,7 @@ import {
 } from "../redux/actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../redux/constants/productConstants";
 
-const ProductListPage = ({ history, match }) => {
+const AdminProductListPage = ({ history, match }) => {
     const pageNumber = match.params.pageNumber || 1;
 
     const dispatch = useDispatch();
@@ -146,4 +146,4 @@ const ProductListPage = ({ history, match }) => {
     );
 };
 
-export default ProductListPage;
+export default AdminProductListPage;

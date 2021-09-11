@@ -117,7 +117,10 @@ const OrderPage = ({ match, history }) => {
                             </div>
                             {order.isDelivered ? (
                                 <Message variant="success">
-                                    Delivered on {order.deliveredAt}
+                                    Delivered on{" "}
+                                    {order.deliveredAt.substring(0, 10) +
+                                        " at " +
+                                        order.deliveredAt.substring(11, 19)}
                                 </Message>
                             ) : (
                                 <Message variant="danger">
@@ -134,7 +137,10 @@ const OrderPage = ({ match, history }) => {
                             </p>
                             {order.isPaid ? (
                                 <Message variant="success">
-                                    Paid on {order.paidAt}
+                                    Paid on{" "}
+                                    {order.paidAt.substring(0, 10) +
+                                        " at " +
+                                        order.paidAt.substring(11, 19)}
                                 </Message>
                             ) : (
                                 <Message variant="danger">Not paid</Message>

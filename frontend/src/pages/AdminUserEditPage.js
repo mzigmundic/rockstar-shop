@@ -8,7 +8,7 @@ import FormContainer from "../components/FormContainer";
 import { getUserDetails, updateUser } from "../redux/actions/userActions";
 import { USER_UPDATE_RESET } from "../redux/constants/userConstants";
 
-const UserEditPage = ({ match, history }) => {
+const AdminUserEditPage = ({ match, history }) => {
     const userId = match.params.id;
 
     const [name, setName] = useState("");
@@ -103,4 +103,4 @@ const UserEditPage = ({ match, history }) => {
     );
 };
 
-export default UserEditPage;
+export default AdminUserEditPage;

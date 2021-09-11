@@ -6,7 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { listUsers, deleteUser } from "../redux/actions/userActions";
 
-const UserListPage = ({ history }) => {
+const AdminUserListPage = ({ history }) => {
     const dispatch = useDispatch();
 
     const userList = useSelector((state) => state.userList);
@@ -98,4 +98,4 @@ const UserListPage = ({ history }) => {
     );
 };
 
-export default UserListPage;
+export default AdminUserListPage;

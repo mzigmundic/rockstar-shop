@@ -11,11 +11,11 @@ import ShippingPage from "../pages/ShippingPage";
 import PaymentPage from "../pages/PaymentPage";
 import PlaceOrderPage from "../pages/PlaceOrderPage";
 import OrderPage from "../pages/OrderPage";
-import OrderListPage from "../pages/OrderListPage";
-import UserListPage from "../pages/UserListPage";
-import UserEditPage from "../pages/UserEditPage";
-import ProductListPage from "../pages/ProductListPage";
-import ProductEditPage from "../pages/ProductEditPage";
+import AdminOrderListPage from "../pages/AdminOrderListPage";
+import AdminUserListPage from "../pages/AdminUserListPage";
+import AdminUserEditPage from "../pages/AdminUserEditPage";
+import AdminProductListPage from "../pages/AdminProductListPage";
+import AdminProductEditPage from "../pages/AdminProductEditPage";
 
 const Routing = () => {
     return (
@@ -37,20 +37,23 @@ const Routing = () => {
             <Route path="/payment" component={PaymentPage} />
             <Route path="/place-order" component={PlaceOrderPage} />
             <Route path="/order/:id" component={OrderPage} />
-            <Route path="/admin/user-list" component={UserListPage} />
+            <Route path="/admin/user-list" component={AdminUserListPage} />
             <Route
                 path="/admin/product-list"
-                component={ProductListPage}
+                component={AdminProductListPage}
                 exact
             />
             <Route
                 path="/admin/product-list/:pageNumber"
-                component={ProductListPage}
+                component={AdminProductListPage}
                 exact
             />
-            <Route path="/admin/order-list" component={OrderListPage} />
-            <Route path="/admin/product/:id/edit" component={ProductEditPage} />
-            <Route path="/admin/user/:id/edit" component={UserEditPage} />
+            <Route path="/admin/order-list" component={AdminOrderListPage} />
+            <Route
+                path="/admin/product/:id/edit"
+                component={AdminProductEditPage}
+            />
+            <Route path="/admin/user/:id/edit" component={AdminUserEditPage} />
         </Switch>
     );
 };

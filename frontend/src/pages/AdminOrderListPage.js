@@ -6,7 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { listAllOrders } from "../redux/actions/orderActions";
 
-const OrderListPage = ({ history }) => {
+const AdminOrderListPage = ({ history }) => {
     const dispatch = useDispatch();
 
     const orderListAll = useSelector((state) => state.orderListAll);
@@ -48,11 +48,17 @@ const OrderListPage = ({ history }) => {
                             <tr key={order._id}>
                                 <td>{order._id}</td>
                                 <td>{order.user && order.user.name}</td>
-                                <td>{order.createdAt.substring(0, 10)}</td>
+                                <td>
+                                    {order.createdAt.substring(0, 10) +
+                                        " at " +
+                                        order.createdAt.substring(11, 19)}
+                                </td>
                                 <td>{order.totalPrice} €</td>
                                 <td>
                                     {order.isPaid ? (
-                                        order.paidAt.substring(0, 10)
+                                        order.paidAt.substring(0, 10) +
+                                        " at " +
+                                        order.paidAt.substring(11, 19)
                                     ) : (
                                         <i
                                             className="fas fa-times"
@@ -62,7 +68,9 @@ const OrderListPage = ({ history }) => {
                                 </td>
                                 <td>
                                     {order.isDelivered ? (
-                                        order.deliveredAt.substring(0, 10)
+                                        order.deliveredAt.substring(0, 10) +
+                                        " at " +
+                                        order.deliveredAt.substring(11, 19)
                                     ) : (
                                         <i
                                             className="fas fa-times"
@@ -89,4 +97,4 @@ const OrderListPage = ({ history }) => {
     );
 };
 
-export default OrderListPage;
+export default AdminOrderListPage;

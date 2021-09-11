@@ -19,12 +19,19 @@ const PlaceOrderPage = ({ history }) => {
     }
 
     // Calculate Prices
-    cart.itemsPrice = cart.cartItems
-        .reduce((acc, item) => acc + item.price * item.qty, 0)
-        .toFixed(2);
+    cart.itemsPrice = (
+        cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0) *
+        0.74
+    ).toFixed(2);
     cart.shippingPrice = cart.itemsPrice > 1000 ? 0 : 100;
-    cart.taxPrice = Number((0.26 * cart.itemsPrice).toFixed(2));
-    cart.totalPrice = Number(cart.itemsPrice) + Number(cart.shippingPrice);
+    cart.taxPrice = (
+        cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0) *
+        0.26
+    ).toFixed(2);
+    cart.totalPrice = (
+        cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0) +
+        cart.shippingPrice
+    ).toFixed(2);
 
     const orderCreate = useSelector((state) => state.orderCreate);
     const { order, success, error } = orderCreate;
@@ -125,20 +132,20 @@ const PlaceOrderPage = ({ history }) => {
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Items</Col>
+                                    <Col>Items (without tax)</Col>
                                     <Col>{cart.itemsPrice} €</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Shipping</Col>
-                                    <Col>{cart.shippingPrice} €</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax</Col>
                                     <Col>{cart.taxPrice} €</Col>
+                                </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>Shipping</Col>
+                                    <Col>{cart.shippingPrice} €</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>

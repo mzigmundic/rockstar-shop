@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
@@ -38,7 +38,9 @@ const Header = () => {
                             </LinkContainer>
                             {userInfo ? (
                                 <NavDropdown
-                                    title={userInfo.name}
+                                    title={`${userInfo.name} ${
+                                        userInfo.isAdmin ? "(Admin)" : ""
+                                    }`}
                                     id="userName"
                                 >
                                     <LinkContainer to="/profile">
@@ -46,6 +48,25 @@ const Header = () => {
                                             Profile
                                         </NavDropdown.Item>
                                     </LinkContainer>
+                                    {userInfo.isAdmin && (
+                                        <Fragment>
+                                            <LinkContainer to="/admin/user-list">
+                                                <NavDropdown.Item>
+                                                    Users
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/product-list">
+                                                <NavDropdown.Item>
+                                                    Products
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/order-list">
+                                                <NavDropdown.Item>
+                                                    Orders
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                        </Fragment>
+                                    )}
                                     <NavDropdown.Item onClick={logoutHandler}>
                                         Logout
                                     </NavDropdown.Item>
@@ -56,25 +77,6 @@ const Header = () => {
                                         <i className="fas fa-user"></i> Sign In
                                     </Nav.Link>
                                 </LinkContainer>
-                            )}
-                            {userInfo && userInfo.isAdmin && (
-                                <NavDropdown title="Admin" id="adminmenu">
-                                    <LinkContainer to="/admin/user-list">
-                                        <NavDropdown.Item>
-                                            Users
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/admin/product-list">
-                                        <NavDropdown.Item>
-                                            Products
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                    <LinkContainer to="/admin/order-list">
-                                        <NavDropdown.Item>
-                                            Orders
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                </NavDropdown>
                             )}
                         </Nav>
                     </Navbar.Collapse>

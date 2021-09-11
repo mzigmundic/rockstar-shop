@@ -45,7 +45,7 @@ const ProfilePage = ({ location, history }) => {
                 setEmail(user.email);
             }
         }
-    }, [dispatch, history, userInfo, user, success]);
+    }, [dispatch, history, userInfo, user, success, orders]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -60,7 +60,7 @@ const ProfilePage = ({ location, history }) => {
 
     return (
         <Row>
-            <Col md={3}>
+            <Col md={3} className="mb-3">
                 <h2>User Profile</h2>
                 {message && <Message variant="danger">{message}</Message>}
                 {error && <Message variant="danger">{error}</Message>}
@@ -120,6 +120,8 @@ const ProfilePage = ({ location, history }) => {
                     <Loader />
                 ) : errorOrders ? (
                     <Message variant="danger">{errorOrders}</Message>
+                ) : orders.length === 0 ? (
+                    <p className="mt-5 text-center">No orders</p>
                 ) : (
                     <Table
                         striped
@@ -142,11 +144,17 @@ const ProfilePage = ({ location, history }) => {
                             {orders.map((order) => (
                                 <tr key={order._id}>
                                     <td>{order._id}</td>
-                                    <td>{order.createdAt.substring(0, 10)}</td>
+                                    <td>
+                                        {order.createdAt.substring(0, 10) +
+                                            " at " +
+                                            order.createdAt.substring(11, 19)}
+                                    </td>
                                     <td>{order.totalPrice}</td>
                                     <td>
                                         {order.isPaid ? (
-                                            order.paidAt.substring(0, 10)
+                                            order.paidAt.substring(0, 10) +
+                                            " at " +
+                                            order.paidAt.substring(11, 19)
                                         ) : (
                                             <i
                                                 className="fas fa-times"
@@ -160,7 +168,9 @@ const ProfilePage = ({ location, history }) => {
                                     </td>
                                     <td>
                                         {order.isDelivered ? (
-                                            order.deliveredAt.substring(0, 10)
+                                            order.deliveredAt.substring(0, 10) +
+                                            " at " +
+                                            order.deliveredAt.substring(11, 19)
                                         ) : (
                                             <i
                                                 className="fas fa-times"

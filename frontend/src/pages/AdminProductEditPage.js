@@ -12,7 +12,7 @@ import {
 } from "../redux/actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../redux/constants/productConstants";
 
-const ProductEditPage = ({ match, history }) => {
+const AdminProductEditPage = ({ match, history }) => {
     const productId = match.params.id;
 
     const [name, setName] = useState("");
@@ -200,4 +200,4 @@ const ProductEditPage = ({ match, history }) => {
     );
 };
 
-export default ProductEditPage;
+export default AdminProductEditPage;
