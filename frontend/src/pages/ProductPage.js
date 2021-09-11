@@ -35,18 +35,22 @@ const ProductPage = ({ history, match }) => {
     const productCreateReview = useSelector(
         (state) => state.productCreateReview
     );
-    const { success: successProductReview, error: errorProductReview } =
-        productCreateReview;
+    const {
+        loading: loadingProductReview,
+        success: successProductReview,
+        error: errorProductReview,
+    } = productCreateReview;
 
     useEffect(() => {
         if (successProductReview) {
-            alert("Review Submited");
             setRating(0);
             setComment("");
+        }
+        if (!product._id || product._id !== match.params.id) {
+            dispatch(listProductDetails(match.params.id));
             dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
         }
-        dispatch(listProductDetails(match.params.id));
-    }, [dispatch, match, successProductReview]);
+    }, [dispatch, match, successProductReview, product]);
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${qty}`);
@@ -193,6 +197,12 @@ const ProductPage = ({ history, match }) => {
                                 ))}
                                 <ListGroup.Item>
                                     <h2>Write a Customer Review</h2>
+                                    {successProductReview && (
+                                        <Message variant="success">
+                                            Review submitted successfully
+                                        </Message>
+                                    )}
+                                    {loadingProductReview && <Loader />}
                                     {errorProductReview && (
                                         <Message variant="danger">
                                             {errorProductReview}
@@ -247,6 +257,7 @@ const ProductPage = ({ history, match }) => {
                                             <Button
                                                 type="submit"
                                                 variant="primary"
+                                                disabled={loadingProductReview}
                                             >
                                                 Submit
                                             </Button>
