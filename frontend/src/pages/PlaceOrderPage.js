@@ -4,9 +4,9 @@ import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { createOrder } from "../actions/orderActions";
-import { ORDER_CREATE_RESET } from "../constants/orderConstants";
-import { USER_DETAILS_RESET } from "../constants/userConstants";
+import { createOrder } from "../redux/actions/orderActions";
+import { ORDER_CREATE_RESET } from "../redux/constants/orderConstants";
+import { USER_DETAILS_RESET } from "../redux/constants/userConstants";
 
 const PlaceOrderPage = ({ history }) => {
     const dispatch = useDispatch();

@@ -10,11 +10,11 @@ import {
     getOrderDetails,
     payOrder,
     deliverOrder,
-} from "../actions/orderActions";
+} from "../redux/actions/orderActions";
 import {
     ORDER_PAY_RESET,
     ORDER_DELIVER_RESET,
-} from "../constants/orderConstants";
+} from "../redux/constants/orderConstants";
 
 const OrderPage = ({ match, history }) => {
     const orderId = match.params.id;

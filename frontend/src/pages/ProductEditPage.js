@@ -6,8 +6,11 @@ import axios from "axios";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
-import { listProductDetails, updateProduct } from "../actions/productActions";
-import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import {
+    listProductDetails,
+    updateProduct,
+} from "../redux/actions/productActions";
+import { PRODUCT_UPDATE_RESET } from "../redux/constants/productConstants";
 
 const ProductEditPage = ({ match, history }) => {
     const productId = match.params.id;

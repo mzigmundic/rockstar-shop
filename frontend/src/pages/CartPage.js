@@ -11,7 +11,7 @@ import {
     Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const CartPage = ({ match, location, history }) => {
     const productId = match.params.id;

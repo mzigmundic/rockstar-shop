@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getUserDetails, updateUserProfile } from "../actions/userActions";
-import { listMyOrders } from "../actions/orderActions";
-import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
+import {
+    getUserDetails,
+    updateUserProfile,
+} from "../redux/actions/userActions";
+import { listMyOrders } from "../redux/actions/orderActions";
+import { USER_UPDATE_PROFILE_RESET } from "../redux/constants/userConstants";
 
 const ProfilePage = ({ location, history }) => {
     const [name, setName] = useState("");

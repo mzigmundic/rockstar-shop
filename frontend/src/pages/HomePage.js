@@ -5,7 +5,7 @@ import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
-import { listProducts } from "../actions/productActions";
+import { listProducts } from "../redux/actions/productActions";
 
 const HomePage = ({ match }) => {
     const keyword = match.params.keyword;
