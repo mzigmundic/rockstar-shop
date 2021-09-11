@@ -10,6 +10,7 @@ import {
 } from "../redux/actions/userActions";
 import { listMyOrders } from "../redux/actions/orderActions";
 import { USER_UPDATE_PROFILE_RESET } from "../redux/constants/userConstants";
+import { ORDER_LIST_MY_RESET } from "../redux/constants/orderConstants";
 
 const ProfilePage = ({ location, history }) => {
     const [name, setName] = useState("");
@@ -27,7 +28,10 @@ const ProfilePage = ({ location, history }) => {
     const { userInfo } = userLogin;
 
     const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-    const { success } = userUpdateProfile;
+    const { success: successProfile } = userUpdateProfile;
+
+    const orderPay = useSelector((state) => state.orderPay);
+    const { success: successPay } = orderPay;
 
     const orderListMy = useSelector((state) => state.orderListMy);
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
@@ -36,8 +40,9 @@ const ProfilePage = ({ location, history }) => {
         if (!userInfo) {
             history.push("/login");
         } else {
-            if (!user || !user.name || success) {
+            if (!user || !user.name || successProfile) {
                 dispatch({ type: USER_UPDATE_PROFILE_RESET });
+                dispatch({ type: ORDER_LIST_MY_RESET });
                 dispatch(getUserDetails("profile"));
                 dispatch(listMyOrders());
             } else {
@@ -45,7 +50,7 @@ const ProfilePage = ({ location, history }) => {
                 setEmail(user.email);
             }
         }
-    }, [dispatch, history, userInfo, user, success, orders]);
+    }, [dispatch, history, userInfo, user, successProfile, successPay]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -64,7 +69,7 @@ const ProfilePage = ({ location, history }) => {
                 <h2>User Profile</h2>
                 {message && <Message variant="danger">{message}</Message>}
                 {error && <Message variant="danger">{error}</Message>}
-                {success && (
+                {successProfile && (
                     <Message variant="success">Profile Updated</Message>
                 )}
                 {loading && <Loader />}
