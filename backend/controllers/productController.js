@@ -71,9 +71,9 @@ const updateProduct = asyncHandler(async (req, res) => {
         product.price = price;
         product.image = image;
         product.brand = brand;
-        (product.category = category),
-            (product.countInStock = countInStock),
-            (product.description = description);
+        product.category = category;
+        product.countInStock = countInStock;
+        product.description = description;
 
         const updatedProduct = await product.save();
         res.json(updatedProduct);
