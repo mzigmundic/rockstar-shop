@@ -49,7 +49,7 @@ const AdminUserEditPage = ({ match, history }) => {
 
     return (
         <Fragment>
-            <Link to="/admin/user-list" className="btn btn-light my-3">
+            <Link to="/admin/user-list" className="btn btn-dark my-3">
                 Go Back
             </Link>
             <FormContainer>
@@ -84,7 +84,7 @@ const AdminUserEditPage = ({ match, history }) => {
                             ></Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId="isAdmin">
+                        <Form.Group controlId="isAdmin" className="ml-4">
                             <Form.Check
                                 type="checkbox"
                                 label="Is Admin"
